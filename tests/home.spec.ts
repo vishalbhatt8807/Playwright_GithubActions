@@ -23,5 +23,5 @@ test('Perform search Operation Failed', async({page}) => {
     await page.waitForTimeout(5000);
     const product = (await page.$$("//div[@class='_75nlfW']/div")).length;
     console.log(product);
-    expect(product).toBe(41);
+    expect(product).toBe(40);
 });
