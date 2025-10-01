@@ -14,3 +14,14 @@ test('Perform search Operation', async({page}) => {
     console.log(product);
     expect(product).toBe(40);
 });
+
+test('Perform search Operation Failed', async({page}) => {
+    await page.getByPlaceholder("Search for Products, Brands and More").click();
+    await page.keyboard.down('Enter');
+    await page.getByRole('link',{name:'t shirts'}).click();
+    await expect(await page.getByPlaceholder("Search for Products, Brands and More").getAttribute('value')).toBe("t shirts")
+    await page.waitForTimeout(5000);
+    const product = (await page.$$("//div[@class='_75nlfW']/div")).length;
+    console.log(product);
+    expect(product).toBe(41);
+});
